@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fi-FI">
+<head>
+  <title>Laskin (jQuery)</title>
+
+  <meta charset="utf-8">
+  <meta name="Description" content="Harjoitus: iLaskin.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="peter.ico">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/icalc2.css">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+
+  <style>
+  @font-face {
+    font-family: 'San_Francisco';
+    src: url('fonts/sanfranciscodisplay-regular-webfont.woff');
+  }
+</style>
+</head>
+<body>
+  <script src="js/icalc2.js">
+  </script>
+  <br />
+  <p style="color:white;font-style:bold;font-size:32px;padding-left:40px">
+    Paina F12
+  </p>
+  <div class="container">
+    <div id="laskin">
+      <div class="laskinrivi">
+        <div class="row">
+          <div class="col-6 tulosteet">
+            <label for="luku1">Luku 1</label><br />
+            <input class="syötekenttä1 numerokentta" type="number" name="luku1" />
+          </div>
+          <div class="col-6 tulosteet">
+            <label for="luku2">Luku 2</label><br />
+            <input class="syötekenttä2 numerokentta" type="number" name="luku2" />
+          </div>
+        </div>
+      </div>
+      <div class="laskinrivi">
+        <div class="row">
+          <div class="col-12 tulosteet">
+            <label for="Tulos">Tulos: </label>
+            <input readonly -moz-read-only class="tuloskenttä" type="number" name="tulos" />
+          </div>
+        </div>
+      </div>
+      <div class="laskinrivi">
+        <button id="c1" class="c nappi">C1</button>
+        <button id="c2" class="c nappi">C2</button>
+        <button id="c1jac2" class="c nappi">C1&2</button>
+        <button id="jako" class="lt nappi">÷</button>
+      </div>
+      <div class="laskinrivi">
+        <button id="7" class="nro nappi">7</button>
+        <button id="8" class="nro nappi">8</button>
+        <button id="9" class="nro nappi">9</button>
+        <button id="kertaa" class="lt nappi">×</button>
+      </div>
+      <div class="laskinrivi">
+        <button id="4" class="nro nappi">4</button>
+        <button id="5" class="nro nappi">5</button>
+        <button id="6" class="nro nappi">6</button>
+        <button id="miinus" class="lt nappi">-</button>
+      </div>
+      <div class="laskinrivi">
+        <button id="1" class="nro nappi">1</button>
+        <button id="2" class="nro nappi">2</button>
+        <button id="3" class="nro nappi">3</button>
+        <button id="plus" class="lt nappi">+</button>
+      </div>
+      <div class="laskinrivi">
+        <button id="nolla" class="nro nappi">0</button>
+        <button id="pilkku" class="nappi">,</button>
+        <button id="equals" class="lt nappi">=</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

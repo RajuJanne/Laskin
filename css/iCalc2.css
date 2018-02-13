@@ -1,0 +1,148 @@
+/* valkoinen on #ffffff
+tausta on #000
+numerot ja pilkku ovat #333333
+C1, C2, C1&C2 == #a6a6a6
+Käytetty laskutoiminto #ffd300
+Laskutoiminnot ja "=" ovat#ff9500 */
+/*
+.nappi {
+ottaa kiinni <div class="nappi">
+}
+#nappi {
+ottaa kiinni <div id="nappi"></div>
+}
+#nappi a {
+ottaa kiinni <div id="nappi"><a></a></div>
+}
+.napinmaarite a {
+ottaa kii <div id="nappi" class="napinmaarite"><a></a>
+}
+.n1,.n2 {
+ottaa kiinni <div class="n1"></div><div class="n2"></div>
+}
+.maarite1.maarite2.m3 {
+ottaa kiinni <div class="maarite1 maarite2 m"></div>
+}
+*/
+/* input-kenttien nappuloiden piilotus */
+input[type=number]:focus {
+  outline: none;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+body {
+  background: #4080d0;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: auto;
+  font-family: "San_Francisco", "Helvetica Neue", "Lucida Grande";
+}
+div#laskin {
+  max-width: 426px;
+  margin: auto;
+  background: #000;
+  color: #ffffff;
+  padding: 6px;
+}
+.tulosteet {
+  font-size: 22px;
+  font-style: bold;
+  color: #fff;
+}
+#error {
+  background: red;
+}
+.luku1 {
+  margin-left: 30px;
+}
+.syötekenttä1 {
+  max-width: 95%;
+}
+.syötekenttä2{
+  max-width: 95%;
+}
+.nappi {
+  font-size: 42px;
+  font-style: bold;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: none;
+  transition: all 0.2s linear;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.nappi:focus {
+  outline: none;
+}
+#c1jac2 {
+  font-size: 30px;
+  position: relative;
+  top: -5px;
+}
+.nappi#nolla {
+  width: 204px;
+  border-radius: 50px;
+  text-align: left;
+  padding-left: 40px;
+}
+.syötekenttä1 {
+  border: none;
+  background: #000;
+  color: #fff;
+}
+.syötekenttä2 {
+  border: none;
+  background: #000;
+  color: #fff;
+}
+.tuloskenttä {
+  border: none;
+  background: #000;
+  color: #fff;
+}
+div.laskinrivi {
+  /* padding-top: 3px;
+  padding-bottom: 3px; */
+}
+.nro {
+  background: #333333;
+  color: #ffffff;
+}
+#pilkku {
+  background: #333333;
+  color: #ffffff;
+}
+#pilkku:hover {
+  background: #a6a6a6;
+}
+.nro:hover {
+  background: #a6a6a6;
+}
+.c {
+  background: #a6a6a6;
+  color: #ffffff;
+}
+.c:hover {
+  opacity: 0.7;
+}
+.lt {
+  background: #ff9500;
+  color: #ffffff;
+}
+.lt:hover {
+  background: #ffd300;
+}
+.active {
+  background: #ffd300
+}
