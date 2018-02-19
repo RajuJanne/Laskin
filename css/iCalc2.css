@@ -58,6 +58,7 @@ div#laskin {
   font-size: 22px;
   font-style: bold;
   color: #fff;
+  padding: 0px 0px 0px 18px;
 }
 #error {
   background: red;
@@ -100,6 +101,7 @@ div#laskin {
   border: none;
   background: #000;
   color: #fff;
+  width: 414px;
 }
 .syötekenttä2 {
   border: none;
@@ -110,6 +112,13 @@ div#laskin {
   border: none;
   background: #000;
   color: #fff;
+}
+.syötehistoria {
+  border: none;
+  background: #000;
+  color: #fff;
+  width: 414px;
+  font-size: 16px;
 }
 div.laskinrivi {
   /* padding-top: 3px;
