@@ -1,30 +1,3 @@
-/* valkoinen on #ffffff
-tausta on #000
-numerot ja pilkku ovat #333333
-C1, C2, C1&C2 == #a6a6a6
-Käytetty laskutoiminto #ffd300
-Laskutoiminnot ja "=" ovat#ff9500 */
-/*
-.nappi {
-ottaa kiinni <div class="nappi">
-}
-#nappi {
-ottaa kiinni <div id="nappi"></div>
-}
-#nappi a {
-ottaa kiinni <div id="nappi"><a></a></div>
-}
-.napinmaarite a {
-ottaa kii <div id="nappi" class="napinmaarite"><a></a>
-}
-.n1,.n2 {
-ottaa kiinni <div class="n1"></div><div class="n2"></div>
-}
-.maarite1.maarite2.m3 {
-ottaa kiinni <div class="maarite1 maarite2 m"></div>
-}
-*/
-/* input-kenttien nappuloiden piilotus */
 input[type=number]:focus {
   outline: none;
 }
@@ -83,13 +56,12 @@ div#laskin {
   margin-top: 3px;
   margin-bottom: 3px;
 }
+.nappi.hide {
+  color: #000;
+  background: #000;
+}
 .nappi:focus {
   outline: none;
-}
-#c1jac2 {
-  font-size: 30px;
-  position: relative;
-  top: -5px;
 }
 .nappi#nolla {
   width: 204px;

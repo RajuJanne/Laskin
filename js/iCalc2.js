@@ -1,56 +1,29 @@
-function laske(laskutoiminto){
-  // tään funktion vois periaatteessa splitata osiin.
-  // ekassa tarkistetaan kentät
-  // tokassa tarkistetaan laskutoiminto
-  // kolmannelle syötetään luvut ja toiminto
-  // neljäs hoitaa tulostuksen (ja desimaalitrimmauksen)
-  let luku1 = parseInt($('.syötekenttä1').val());
-  let luku2 = parseInt($('.syötekenttä2').val());
-  // tyhjä parseutuu -> NaN
-  // NaN !== NaN
-  if (luku1 == luku1 && luku2 == luku2) {
-    let tulos;
-    if (laskutoiminto == "jako") {
-      tulos = luku1 / luku2;
-    } else if (laskutoiminto == "kertaa") {
-      tulos = luku1 * luku2;
-    } else if (laskutoiminto == "miinus") {
-      tulos = luku1 - luku2;
-    } else if (laskutoiminto == "plus") {
-      tulos = luku1 + luku2;
-    } else {
-      console.log('mahdoton on tapahtunut');
-    }
-    // annetaan tulos MAKSIMISSAAN 5 desimaalin tarkkuudella.
-    if (tulos % 1 !== 0) {
-      tarkkuus = 5;
-      tulos = tulos.toString();
-      pituus = tulos.length;
-      let erotin = tulos.indexOf('.');
-      tulos = parseFloat(tulos);
-      if (pituus <= (erotin + tarkkuus)){
-        tulos = tulos.toFixed(pituus - erotin - 1);
-      }
-      else {
-        häntä = erotin + 4;
-        tulos = tulos.toFixed(häntä);
-      }
-    }
-    $('.tuloskenttä').val(tulos);
-    $('.tuloskenttä').focus();
-    $('.active').removeClass('active');
+"use strict";
+
+// Olin laiska tään laskemisen kanssa ja tein nopeen ja noin toimivan.
+// Suosittelen laskemaan 1 - 0.9
+// Lisäksi pelkkä C painaminen aiheuttaa jännää.
+
+// Ahkerampi tyyppi olis myös varmistanu mitä tapahtuu kun historiakenttä menee täyteen.
+
+function laske() {
+  $(".tuloskenttä").val(eval(`${$(".syötehistoria").val()}${$(".syötekenttä1").val()}`));
+  $(".syötehistoria").val(`${$(".syötehistoria").val()}${$(".syötekenttä1").val()}`);
+  $(".syötekenttä1").val('');
+  $(".active").removeClass("active");
+}
+function lisaaRiville(laskutoiminto) {
+  let historia = $(".syötehistoria").val();
+  let uusihistoria;
+  if  (historia !== '') {
+    uusihistoria = `${historia}${$(".syötekenttä1").val()}${laskutoiminto}`;
+    $(".syötehistoria").val(uusihistoria);
+    $(".syötekenttä1").val('');
   } else {
-    // väläytäErrori();
-    console.log('Virhe: anna numerot hölmö!');
-    aktivoiKenttä();
+    $(".syötehistoria").val(`${$(".syötekenttä1").val()}${laskutoiminto}`);
+    $(".syötekenttä1").val('');
   }
 }
-// function väläytäErrori(){
-//    vaihtoehto a)
-//      väläyttää tuloskentän edessä punaisen divin
-//    vaihtoehto b)
-//      väläyttää puuttuvan (monikko) numerokentän .^
-// }
 function kenttä1(){
   $('.syötekenttä1').val('');
   $('.syötekenttä1').focus();
@@ -60,15 +33,11 @@ function kenttä1(){
   }
 }
 function kenttä2(){
-  $('.syötekenttä2').val('');
-  $('.syötekenttä2').focus();
-  if(!$('.syötekenttä2').hasClass('active')) {
-    $('.active').removeClass('active');
-    $('.syötekenttä2').addClass('active');
-  }
+  $('.syötehistoria').val('');
+  $('.syötekenttä1').val('');
 }
 function tarkistaKentät(){
-  if ($('.syötekenttä1').val() != '' && $('.syötekenttä2').val() != '')
+  if ($('.syötekenttä1').val() != '')
   { return true; } else { return false; }
 }
 function aktivoiKenttä(){
@@ -103,48 +72,44 @@ $(document).ready(function(){
     $('.numerokentta.active').val(vanhaluku + luku);
   });
   $('#c1').click(function(){
-    kenttä1();
-    tyhjennäTulos();
+    if ($(".tuloskenttä").val() != '') {
+      console.log("ei pitäs olla tulosta kek");
+      kenttä1();
+      tyhjennäTulos();
+    }
   });
   $('#c2').click(function(){
     kenttä2();
     tyhjennäTulos();
   });
-  $('#c1jac2').click(function(){
-    $('.syötekenttä1').val('');
-    $('.syötekenttä2').val('');
-    laskutoiminto = "";
-    tyhjennäTulos();
-    aktivoiKenttä();
-  });
   $('#jako').click(function(){
-    laskutoiminto = "jako";
+    laskutoiminto = `/`;
     if (aktivoiKenttä()) {
-      laske(laskutoiminto);
+      lisaaRiville(laskutoiminto);
     } else {
       tyhjennäTulos();
     }
   });
   $('#kertaa').click(function(){
-    laskutoiminto = "kertaa";
+    laskutoiminto = `*`;
     if (aktivoiKenttä()) {
-      laske(laskutoiminto);
+      lisaaRiville(laskutoiminto);
     } else {
       tyhjennäTulos();
     }
   });
   $('#miinus').click(function(){
-    laskutoiminto = "miinus";
+    laskutoiminto = `-`;
     if (aktivoiKenttä()) {
-      laske(laskutoiminto);
+      lisaaRiville(laskutoiminto);
     } else {
       tyhjennäTulos();
     }
   });
   $('#plus').click(function(){
-    laskutoiminto = "plus";
+    laskutoiminto = `+`;
     if (aktivoiKenttä()) {
-      laske(laskutoiminto);
+      lisaaRiville(laskutoiminto);
     } else {
       tyhjennäTulos();
     }
@@ -153,11 +118,12 @@ $(document).ready(function(){
     laske(laskutoiminto);
   });
   $('#pilkku').click(function(){
-    console.log('Error: Not implemented!');
-    // yksi tapa voisi olla lisätä .nappi.nro classille tarkistus,
-    // onko edellinen painettu nappula pilkku, ja muistaa vanha luku ->
-    // ottaa uusi merkki vastaan ja concattaa ne pisteen ympärille.
-    // samalla pitäisi tarkistaa onko luvussa jo desimaalierotin.
+    let luku = $(".syötekenttä1").val();
+    if (!luku.includes(".")) {
+      let uusiluku = `${luku}.`;
+      $(".syötekenttä1").val(uusiluku);
+    } else {
+    }
   });
   // tuloskenttää klikkaamalla otetaan arvo talteen clipboardille.
   $('.tuloskenttä').click(function(){
